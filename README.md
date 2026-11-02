@@ -10,13 +10,20 @@ Synthetic demo only — not a compliance certification product.
 
 ### Screenshots
 
-| Login | Upload detail (Processing vs Validation) |
-|-------|------------------------------------------|
-| ![Login](docs/screenshots/01-login.png) | ![Upload detail](docs/screenshots/03-upload-detail.png) |
+#### Login
+<img src="docs/screenshots/01-login.png" alt="Login" width="900" />
 
-| Findings | History |
-|----------|---------|
-| ![Findings](docs/screenshots/04-findings.png) | ![History](docs/screenshots/05-history.png) |
+#### Dashboard
+<img src="docs/screenshots/02-dashboard.png" alt="Dashboard" width="900" />
+
+#### Upload detail — Processing vs Validation
+<img src="docs/screenshots/03-upload-detail.png" alt="Upload detail" width="900" />
+
+#### Findings
+<img src="docs/screenshots/04-findings.png" alt="Findings" width="900" />
+
+#### History
+<img src="docs/screenshots/05-history.png" alt="History" width="900" />
 
 ## Milestone status
 

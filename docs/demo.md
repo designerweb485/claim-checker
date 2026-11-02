@@ -34,4 +34,10 @@ pnpm --filter @claim-checker/api db:ensure-demo
 
 ## Portfolio screenshots
 
-Stills for the README / case study live in `docs/screenshots/` (login, dashboard, upload detail, findings, history).
+Stills for the README / case study live in `docs/screenshots/` (1440×900 desktop captures).
+
+Re-capture after UI changes (API + web running):
+
+```bash
+node scripts/capture-screenshots.mjs
+```
