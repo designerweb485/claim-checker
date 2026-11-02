@@ -1,0 +1,60 @@
+# Local stack: Postgres (dev + test DBs), API, Web.
+# Synthetic demo only — not a HIPAA / X12-certified deployment.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: claimchecker
+      POSTGRES_PASSWORD: claimchecker
+      POSTGRES_DB: claimchecker
+    ports:
+      # High host port avoids clashing with local Postgres on 5432–5433
+      - "55432:5432"
+    volumes:
+      - claimchecker_pg:/var/lib/postgresql/data
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U claimchecker -d claimchecker"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://claimchecker:claimchecker@postgres:5432/claimchecker?schema=public
+      API_PORT: "3001"
+      API_CORS_ORIGIN: http://localhost:3000
+      JWT_SECRET: compose-dev-only-change-me
+      COOKIE_NAME: cc_session
+      UPLOAD_MAX_BYTES: "2097152"
+      UPLOAD_DIR: /app/uploads
+      PRODUCT_NAME: Claim Checker
+    volumes:
+      - claimchecker_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:3001/api/v1
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:3001/api/v1
+    depends_on:
+      - api
+
+volumes:
+  claimchecker_pg:
+  claimchecker_uploads:

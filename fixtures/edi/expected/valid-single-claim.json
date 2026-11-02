@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "delimiters": {
+    "element": "*",
+    "component": ":",
+    "segment": "~",
+    "repetition": "^"
+  },
+  "interchangeControlNumber": "000000901",
+  "groupControlNumber": "1",
+  "transactionControlNumber": "0001",
+  "transactionSetCode": "837",
+  "implementationGuide": "005010X222A1",
+  "claims": [
+    {
+      "claimControlNumber": "CLM-DEMO-1001",
+      "totalCharge": "100.00",
+      "placeOfServiceCode": "11",
+      "billingProvider": {
+        "entityType": "2",
+        "organizationName": "DEMO BILLING CLINIC",
+        "npi": "1999999999",
+        "source": { "segmentIndex": 8, "segmentId": "NM1", "elementIndex": 9 }
+      },
+      "subscriber": {
+        "memberId": "MEM000042",
+        "lastName": "DOE",
+        "firstName": "JANE",
+        "source": { "segmentIndex": 14, "segmentId": "NM1", "elementIndex": 9 }
+      },
+      "diagnoses": [
+        {
+          "sequence": 1,
+          "code": "M545",
+          "codeSet": "ABK",
+          "source": { "segmentIndex": 20, "segmentId": "HI", "elementIndex": 1 }
+        }
+      ],
+      "serviceLines": [
+        {
+          "lineNumber": 1,
+          "procedureCode": "99213",
+          "procedureCodeQualifier": "HC",
+          "charge": "100.00",
+          "unitCode": "UN",
+          "units": "1",
+          "diagnosisPointers": [1],
+          "serviceDate": "20261001",
+          "source": { "segmentIndex": 22, "segmentId": "SV1", "elementIndex": 1 }
+        }
+      ],
+      "source": { "segmentIndex": 19, "segmentId": "CLM", "elementIndex": 1 }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+export function PageHeader({
+  title,
+  description,
+  actions,
+}: {
+  title: string;
+  description?: string;
+  actions?: React.ReactNode;
+}) {
+  return (
+    <header className="page-header">
+      <div className="page-header-row">
+        <div>
+          <h1>{title}</h1>
+          {description ? <p>{description}</p> : null}
+        </div>
+        {actions}
+      </div>
+    </header>
+  );
+}

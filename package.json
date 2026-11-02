@@ -1,0 +1,16 @@
+{
+  "name": "claim-checker",
+  "private": true,
+  "version": "0.0.0",
+  "description": "AI Medical Claim Error Checker — synthetic 837P validation MVP (not HIPAA/X12 certified)",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint"
+  }
+}
